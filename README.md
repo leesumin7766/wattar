@@ -32,7 +32,7 @@ DX Challenge / 부산 빅데이터혁신센터 제출용
 3.  **Q_누수 (Leak):** Isolation Forest. 야간최소유량(Night Minimum Flow)과 오픈랩 데이터 교차 검증으로 누수 탐지
 4.  **Q_산업 (Industry):** 공단 전력사용량 기반 선택적 분리
 
-**분석 환경:** Big-데이터 웨이브 내 **Brightics AI (삼성SDS)**로 상관분석/군집분석/시각화 수행 후 결과 반출
+**분석 환경:** Big-데이터 웨이브 내 **Brightics AI (삼성SDS)** 로 상관분석/군집분석/시각화 수행 후 결과 반출
 
 ## 4. 활용 데이터 (Data Sources)
 
