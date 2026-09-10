@@ -1,0 +1,10 @@
+﻿# 구글 드라이브 데이터 (용량 큼 - GitHub에 올리면 안됨)
+공공데이터포털/
+원본/
+정제/
+*.csv
+*.zip
+
+# 하네스 임시 파일
+node_modules/
+check_harness.ps1
