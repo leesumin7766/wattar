@@ -64,9 +64,32 @@ DX Challenge / 부산 빅데이터혁신센터 제출용
 
 ## 6. Tech Stack
 
-`Python, Prophet, XGBoost, Isolation Forest, SHAP, Big-데이터웨이브 Brightics, QGIS`
+`Python 3.10.11, Prophet, XGBoost, Isolation Forest, SHAP, Big-데이터웨이브 Brightics, QGIS, JupyterLab 4.6.3`
 
-## 7. Repo Structure
+## 7. Repo Structure & Environment
+
+### 7-1. Structure
+wattar-code/
+├── 원본/ # G:\내 드라이브\wattar 심볼릭 링크 - 읽기 전용
+│ ├── 공공데이터포털/
+│ │ ├── 수자원_광역상수도_공급량_API/
+│ │ └── 행안부_행정동별_세대수_API/
+│ ├── 기상청/ # OBS_ASOS_TIM_2021∼2025.csv/xlsx (10개)
+│ ├── 빅데이터웨이브/
+│ └── 행안부_인구/
+├── 정제/ # 전처리 결과물 - Agent가 쓰는 곳
+├── src/data/ # 전처리 파이썬 코드
+├── notebooks/ # 시각화 (00∼07)
+├── docs/brightics/ # Brightics 캡처
+├── .venv/ # Python 3.10.11 가상환경
+├── agent-README.md # LLM 실행/검토용 기계용 가이드
+├── env_versions.txt # 버전 스냅샷 (2026-09-14)
+├── .gitignore
+└── README.md
+
+
+### 7-2. Environment Versions (2026-09-14 16:23 기준)
+
 | 구분 | 프로그램 | 버전 | 경로 / 비고 |
 | :--- | :--- | :--- | :--- |
 | **Python** | Python | 3.10.11 | `C:\Users\tta\AppData\Local\Programs\Python\Python310\python.exe` |
@@ -83,18 +106,33 @@ DX Challenge / 부산 빅데이터혁신센터 제출용
 |  | gemini cli | 0.59.0 | Antigravity IDE 내장 - Executor 역할 (Gemini 3.0/3.8 Flash High) |
 |  | ollama | 0.33.3 | `C:\Users\tta\AppData\Local\Programs\Ollama\ollama.exe` - Local Checker |
 |  | ollama model | llama3.1:8b (4.9GB) | 4 days ago |
+| **분석 툴** | Brightics Studio | v1.3 (Latest OSS) | `C:\brightics-studio` - 삼성SDS 무료 공개 버전, `http://127.0.0.1:3000` |
+|  | QGIS | 3.x | 지도 시각화 |
 
-### 실행 방법
+### 7-3. Quick Start
 
 ```powershell
 # 1. PATH 복구
 $env:PATH = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
-# 2. 가상환경
+
+# 2. Python 가상환경
 cd C:\Users\tta\wattar-code
 .\.venv\Scripts\Activate.ps1
-# 3. Agent 실행 (Executor)
-# Antigravity IDE Agent 패널: agent-README.md Step1 수행
-# 4. 검토 (Reviewer)
-codex exec "agent-README.md Step1 기준으로 정제/ 검토"
+pip install -r requirements.txt
+
+# 3. Brightics Studio 실행
+cd C:\brightics-studio
+.\start-brightics.cmd
+# 브라우저 자동 팝업 -> 안 뜨면 http://127.0.0.1:3000 접속
+
+# 4. Agent 실행 (Executor = GEMINI)
+# Antigravity IDE Agent 패널: @codebase agent-README.md Step1 수행
+
 # 5. 시각화
+jupyter notebook notebooks/
+
+# 4. 검토 (Reviewer = CODEX)
+codex exec "agent-README.md Step1 기준으로 정제/ 폴더 검토"
+
+# 5. 시각화 (Visualizer = Jupyter)
 jupyter notebook notebooks/
