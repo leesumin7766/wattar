@@ -67,3 +67,34 @@ DX Challenge / 부산 빅데이터혁신센터 제출용
 `Python, Prophet, XGBoost, Isolation Forest, SHAP, Big-데이터웨이브 Brightics, QGIS`
 
 ## 7. Repo Structure
+| 구분 | 프로그램 | 버전 | 경로 / 비고 |
+| :--- | :--- | :--- | :--- |
+| **Python** | Python | 3.10.11 | `C:\Users\tta\AppData\Local\Programs\Python\Python310\python.exe` |
+|  | py launcher | `C:\Windows\py.exe` | `py -3.10`로 실행 |
+|  | pip | 23.0.1 | `pip 26.2.1` 업데이트 가능 |
+|  | venv | `.venv/` | `.\.venv\Scripts\Activate.ps1` |
+|  | 주요 패키지 | jupyterlab 4.6.3, notebook 7.6.2, ipykernel 7.3.0, requests 2.34.2, beautifulsoup4 4.15.0 | `pip list` 참고 |
+| **Node.js** | fnm | 1.39.0 | Node 버전 매니저 |
+|  | Node | v22.23.2 (default), v24.21.0, system | `fnm list` - `v22.23.2` 사용중 |
+|  | npm | 11.19.0 | `C:\Program Files\nodejs\node.exe` |
+| **Git** | git | 2.55.0.windows.3 | |
+|  | gh cli | 2.100.0 (2026-09-03) | |
+| **LLM Tools** | codex-cli (GPT PLUS) | 0.153.4 | `C:\Users\tta\AppData\Roaming\npm\codex` - Reviewer 역할 |
+|  | gemini cli | 0.59.0 | Antigravity IDE 내장 - Executor 역할 (Gemini 3.0/3.8 Flash High) |
+|  | ollama | 0.33.3 | `C:\Users\tta\AppData\Local\Programs\Ollama\ollama.exe` - Local Checker |
+|  | ollama model | llama3.1:8b (4.9GB) | 4 days ago |
+
+### 실행 방법
+
+```powershell
+# 1. PATH 복구
+$env:PATH = [System.Environment]::GetEnvironmentVariable("Path","Machine") + ";" + [System.Environment]::GetEnvironmentVariable("Path","User")
+# 2. 가상환경
+cd C:\Users\tta\wattar-code
+.\.venv\Scripts\Activate.ps1
+# 3. Agent 실행 (Executor)
+# Antigravity IDE Agent 패널: agent-README.md Step1 수행
+# 4. 검토 (Reviewer)
+codex exec "agent-README.md Step1 기준으로 정제/ 검토"
+# 5. 시각화
+jupyter notebook notebooks/
